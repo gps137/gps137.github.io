@@ -51,8 +51,8 @@ footer
 
 .content
 {
-  height: 1000px;
-  min-height: 1000px;
+  height: 1500px;
+  min-height: 1500px;
   position: relative;
   z-index: 1;
   background: url(./2.jpg) no-repeat 50% 50%;
@@ -79,7 +79,7 @@ h1{
 header h1{}
 
 .content h1{
-  line-height: 300px;
+  line-height: 350px;
 }
 
 footer h1

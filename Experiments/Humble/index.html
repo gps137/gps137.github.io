@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Predict the Pattern!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>    
+    <script src="script.js"></script>
+   <aside class="sticky">
+   <h1>Humble-Nishiyama</h1>
+   <br>
+   <p>This is an implementation of the Humble-Nishiyama Randomness game, circa 2016.</p>
+   <br><br>
+   <p>The game is simple: the human player picks a combination of three card colors, such as black-black-red or red-black-red, by clicking the colored buttons. Then the computer picks a different trio.</p>
+   <br><br>
+   <p>The player then clicks the "deal" button until either the player's or the computer's pattern emerges. The winner gets a point. Clicking "clear" resets the cards but doesn't reset the overall score.</p>
+   <br><br>
+   <p>The cards are completely random and without replacement, and the likelihood of any of the eight possible three-color combinations appearing in a random card draw is equal.</p>
+   <br><br>
+   <p>...so why does the computer win far more than half the games?</p>
+   <br><br><br><br>
+   <p>For more info on the math behind this, visit: http://shorturl.at/tBDJ7</p>
+   </aside>
+    <section class="main-content">
+    <input type="image" src="./redbutton2.png" class="topright" style="height: 100px; width: 100px;" onclick="setPlayerPattern('red');"/>
+    <input type="image" src="./blackbutton2.png" class="topleft" style="height: 95px; width: 100px;" onclick="setPlayerPattern('black');"/>
+
+
+    <div id="playerPattern" class="row">
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div id="cpuPattern" class="row">
+
+    </div>
+
+    <button style="height: 45px; width: 120px;" class="mid-text" onclick="deal();" >Deal!</button>
+    </input>
+    <div id="playerhand" class="cardsdealt row">
+    </div>
+    <button class="bottom" style="height: 45px; width: 120px;" onclick="removeAllChildNodes();">Clear!</button>
+    <p id="playerscore" class="bottom-left">Player Score: 0</p>
+    <p id="cpuscore" class="bottom-right">CPU Score: 0</p>
+  </section>
+  </body>
+</html>

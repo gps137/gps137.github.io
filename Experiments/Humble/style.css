@@ -1,0 +1,139 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background: #DDDDDD;
+}
+.card {
+  font-family: sans-serif;
+  position: relative;
+  width: 105px;
+  height: 150px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.2) 42%, rgba(255, 255, 255, 0) 60%);
+}
+
+.card.spades,
+.card.clubs {
+  color: black;
+}
+.card.hearts,
+.card.diamonds {
+  color: red;
+}
+
+.card-value-suit {
+  display: inline-block;
+  position: absolute;
+  background: 'white';
+}
+.card-value-suit.top {
+  top: 5px;
+  left: 5px;
+  background: 'white';
+}
+.card-value-suit.bot {
+  transform: rotate(180deg);
+  bottom: 5px;
+  right: 5px;
+  background: 'white';
+}
+.card-suit {
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 25%;
+  background: 'white';
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.block {
+  width: 100px;
+}
+.topright {          
+  position:absolute;
+  top:5%;                
+  left: 60%;
+}
+.topleft {          
+  position:absolute;
+  top:5%;                
+  left: 40%;
+}
+.bottom {          
+  position:absolute;
+  font-size: 30pt;
+  bottom:25%;                
+  left: 50%;
+}
+.bottom-left{
+  font-size: 20pt;
+  position:absolute;
+  bottom:5%;                
+  left: 30%;
+}
+.bottom-right{
+  font-size: 20pt;
+  position:absolute;
+  bottom:5%;                
+  left: 70%;
+}
+.mid {
+  position:absolute;
+  bottom:40%;
+  left:40%;
+}
+.mid-text {
+  font-size: 30pt;
+  background: black;
+  color: white;
+  mix-blend-mode: multiply;
+  position:absolute;
+  bottom:35%;
+  left:50%;
+}
+
+
+.cardsdealt {
+  position: absolute;
+  top:30%;
+  left:5%;
+}
+
+
+ section {
+	 float: left;
+	 width: 70%;
+	 padding: 1%;
+	 margin-right: 1%;
+}
+ aside {
+	 float: left;
+	 width: 15%;
+         color: #E2E0DE;
+	 padding: 1%;
+	 background-color: #5C255A;
+         height: 100%;
+}
+ .sticky {
+	 position: relative;
+	 top: 0;
+}
