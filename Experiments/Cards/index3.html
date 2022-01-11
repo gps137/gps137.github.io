@@ -1,0 +1,30 @@
+<svg class="pie-chart"></svg>
+<script src="./xkcd.min.js"></script>
+<link rel="stylesheet" href="./style3.css">
+<link href="https://fonts.googleapis.com/css?family=Cabin|Lobster" rel="stylesheet">
+
+<script>
+  const svg = document.querySelector('.pie-chart');
+  const pieChart = new chartXkcd.Pie(svg, {
+    title: 'My segmentation faults', // optional
+    data: {
+      labels: ['Missing or extra }', 'Insidious typo', 'Null pointer dereference', 'Forgot the ;', 'Accidental Ruby'],
+      datasets: [{
+        data: [75, 115, 3, 22, 10],
+      }],
+    },
+    options: { // optional
+      innerRadius: 0.4,
+      legendPosition: chartXkcd.config.positionType.upLeft,
+    },
+  });
+
+</script>
+
+
+</div>
+<div id="container">
+  <a href="./index.html" class="font--lobster">
+    Continue
+  </a>
+</div>
