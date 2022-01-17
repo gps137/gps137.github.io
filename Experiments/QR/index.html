@@ -1,0 +1,70 @@
+<head>
+<title>QuiRky</title>
+<style src="style.css"></style>
+<link href="https://fonts.googleapis.com/css?family=Cabin|Lobster" rel="stylesheet">
+    <style media="screen">
+    .centered {
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        margin: 0;
+    }
+   .font--lobster {
+    font-family: 'Lobster', cursive;
+    font-size: 2em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: 5%;
+     }
+</style>
+
+<script language="javascript" type="text/javascript">
+     var images = new Array()
+     images[0] = "./images/2.png";
+     images[1] = "./images/3.png";
+     images[2] = "./images/4.png";
+     images[3] = "./images/5.png";
+     images[4] = "./images/6.png";
+     images[5] = "./images/7.png";
+     images[6] = "./images/8.png";
+     images[7] = "./images/9.png";
+     images[8] = "./images/10.png";
+     images[9] = "./images/11.png";
+     images[10] = "./images/12.png";
+     images[11] = "./images/13.png";
+     images[12] = "./images/14.png";
+     images[13] = "./images/15.png";
+     images[14] = "./images/16.png";
+     images[15] = "./images/17.png";
+     images[16] = "./images/18.png";
+     images[17] = "./images/19.png";
+     images[18] = "./images/20.png";
+     images[19] = "./images/21.png";
+     images[20] = "./images/22.png";
+     images[21] = "./images/QRcode.png";
+     var interval = setInterval("changeImage()", 500);
+     var x=0;
+
+     function changeImage()
+     {
+                document.getElementById("img").src=images[x]
+                x++;
+                if (images.length == x) 
+                {
+		    clearInterval(interval);
+                    return;
+                }
+     }
+</script>
+</head>
+<body style="background-image: linear-gradient(to bottom right, #1D2226, #1D2226);">
+<img id="img" class="centered" width=500 height=500 src="./images/1.png">
+<a href="../index.html" class="font--lobster">
+    Continue
+  </a>
+</body>
