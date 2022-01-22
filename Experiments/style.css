@@ -51,8 +51,8 @@ footer
 
 .content
 {
-  height: 2100px;
-  min-height: 2100px;
+  height: 2400px;
+  min-height: 2400px;
   position: relative;
   z-index: 1;
   background: url(./2.jpg) no-repeat 50% 50%;
