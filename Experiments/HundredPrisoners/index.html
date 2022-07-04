@@ -1,0 +1,107 @@
+<body>
+
+<pre>
+<code>
+/*
+ * Author: Greg Sinclair
+ * File Name: OneHundredPrisoners.java
+ * Date: 7/4/2022
+ * Description: Implementation of the hundred prisoners riddle, in which an interesting strategy can be employed
+ * &#x9;&#x9;&#x9;in a randomness game to improve a (1/2)^100 success rate to over 31% success rate. Takes advantage 
+ * &#x9;&#x9;&#x9;of a limited number of loop lengths available in a closed system; provided a random array has fewer
+ * &#x9;&#x9;&#x9;than a (prisoner total/2 +1)-length maximum loop from start to finish, all prisoners will succeed.
+ * &#x9;&#x9;&#x9;For added challenge, this implementation makes ample use of recursion.
+ * &#x9;&#x9;&#x9;
+ * For more information about the One Hundred Prisoners riddle, see: https://en.wikipedia.org/wiki/100_prisoners_problem
+ */
+
+import java.util.Random;
+
+public class OneHundredPrisoners {
+&#x9;public static void main(String[] args) {
+&#x9;&#x9;
+&#x9;&#x9;// Prisoners and trials are the only values that can and should be changed.
+&#x9;&#x9;final int prisoners = 100;
+&#x9;&#x9;final int trials = 1000;
+&#x9;&#x9;
+&#x9;&#x9;int successes = 0;
+&#x9;&#x9;
+&#x9;&#x9;// Each iteration represents a trial.
+&#x9;&#x9;for (int i = 0; i &#x3C;trials; i++) {
+&#x9;&#x9;&#x9;int[] arr;
+&#x9;&#x9;&#x9;// Setting up and randomizing boxes.
+&#x9;&#x9;&#x9;random(arr = setUpArray(prisoners));
+&#x9;&#x9;&#x9;// The heart of the program: successes tabulated using recursive solution.
+&#x9;&#x9;&#x9;if (check(0, arr))
+&#x9;&#x9;&#x9;&#x9;successes++;
+&#x9;&#x9;}&#x9;
+&#x9;&#x9;System.out.println(&#x22;Success rate &#x22; + 100*(1.0*successes)/trials + &#x22;%&#x22;);
+&#x9;}
+&#x9;
+&#x9;// Sets up the original array.
+&#x9;static int[] setUpArray(int prisoners) {
+&#x9;&#x9;int[] arr = new int[prisoners];
+&#x9;&#x9;for (int i = 0; i&#x3C; arr.length; i++)
+&#x9;&#x9;&#x9;arr[i] = i;
+&#x9;&#x9;return arr;
+&#x9;}
+&#x9;
+&#x9;// Randomizes the array. In order to handle exceptionally large prisoner numbers, there is a try/catch
+&#x9;// that will utilize an iterative algorithm for randomization if overflow occurs.
+&#x9;static void random(int[] arr) {
+&#x9;&#x9;Random rand = new Random();
+&#x9;&#x9;try {
+&#x9;&#x9;&#x9;random(arr, arr.length-1, rand);
+&#x9;&#x9;} catch(StackOverflowError e) {
+&#x9;&#x9;&#x9;random(arr, rand);
+&#x9;&#x9;}
+&#x9;}
+&#x9;
+&#x9;// Iterative random algorithm.
+&#x9;static void random(int[] arr, Random rand) {
+&#x9;&#x9;for (int i = 0; i&#x3C;arr.length; i++) {
+&#x9;&#x9;&#x9;int j = rand.nextInt(i+1);
+&#x9;&#x9;&#x9;int temp = arr[i];
+&#x9;&#x9;&#x9;arr[i] = arr[j];
+&#x9;&#x9;&#x9;arr[j] = temp;
+&#x9;&#x9;}
+&#x9;}
+&#x9;
+&#x9;// Recursive random algorithm.
+&#x9;static void random(int[] arr, int i, Random rand) {
+&#x9;&#x9;if (i &#x3C; 0)
+&#x9;&#x9;&#x9;return;
+&#x9;&#x9;int j = rand.nextInt(i+1);
+&#x9;&#x9;int temp = arr[i];
+&#x9;&#x9;arr[i] = arr[j];
+&#x9;&#x9;arr[j] = temp;
+&#x9;&#x9;random(arr, i-1, rand);
+&#x9;}
+&#x9;
+&#x9;// Acts as a check to ensure stoppage when all prisoners are accounted for.
+&#x9;static boolean check(int prisoner, int[] boxOrder) {
+&#x9;&#x9;if (prisoner &#x3E;= boxOrder.length)
+&#x9;&#x9;&#x9;return true;
+&#x9;&#x9;return boxes(prisoner, boxOrder) &#x26;&#x26; check(prisoner+1, boxOrder);
+&#x9;}
+
+&#x9;
+&#x9;// Helper function for recursion initiation.
+&#x9;static boolean boxes(int prisoner, int[] boxOrder) {
+&#x9;&#x9;return boxes(prisoner, 0, prisoner, boxOrder);
+&#x9;}
+&#x9;
+&#x9;// Crux of the program: if attempts exceeds 1/2, returns failure. If box contains prisoner, returns success.
+&#x9;// If neither, open the next box.
+&#x9;static boolean boxes(int prisoner, int boxesOpen, int box, int[] boxOrder) {
+&#x9;&#x9;if (boxesOpen &#x3E; boxOrder.length/2)
+&#x9;&#x9;&#x9;return false;
+&#x9;&#x9;if (boxOrder[box] == prisoner)
+&#x9;&#x9;&#x9;return true;
+&#x9;&#x9;return boxes(prisoner, boxesOpen+1, boxOrder[box], boxOrder);
+&#x9;}
+}
+</code>
+</pre>
+
+</body>
