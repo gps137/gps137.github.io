@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Submission</title>
+</head>
+<body>
+    <form id="myForm" action="#" method="post">
+        <input type="text" name="FiledStartDate" placeholder="1900-01-01">
+        <input type="text" id="FiledEndDate" name="FiledEndDate" value="">
+        <input type="text" name="ParticipantLastName" placeholder="Smith">
+        <input type="text" name="ParticipantFirstName" placeholder="John">
+        <input type="text" name="ParticipantDateOfBirth" placeholder="">
+	<input type="hidden" name="__RequestVerificationToken" value="CfDJ8P3W0yQFf6RBv2C9_Z4GA3Eo-1p89XGwkBnHNiXCWLEThjXhhX87b2rGaoV8qoJOBGJ81Y5oJYwvQH5Pjbjgo5jx0_P-XXpg6XFVAzEQ_hDQ5cbH-LuY7276l6JwEcTFyKuCG3pPc_TpgHd249RFgJg">
+	<input type="hidden" name="SearchBy" value="ParticipantName">
+
+        <button type="submit">Submit</button>
+    </form>
+    <script>  
+    	const dateInput = document.getElementById('FiledEndDate');
+    	const today = new Date();
+    	const formattedDate = today.toISOString().slice(0, 10);
+    	dateInput.value = formattedDate;
+
+        const form = document.getElementById('myForm');
+	const targetURL = 'https://corsproxy.io/?https://ujsportal.pacourts.us/CaseSearch';
+
+	form.addEventListener('submit', (event) => {
+    	event.preventDefault(); // Prevent default form submission
+
+    	const formData = new FormData(form);
+    	const payload = {};
+
+    	formData.forEach((value, key) => {
+        payload[key] = value;
+   	 });
+	  function handleData(data) {
+    		console.log(data);
+ 	 }
+    fetch(targetURL, {
+        method: 'POST',
+        headers: {
+            'Host': 'ujsportal.pacourts.us',
+		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0',
+		'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8',
+		'Accept-Language': 'en-US,en;q=0.5',
+		'Accept-Encoding': 'gzip, deflate, br, zstd',
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Content-Length': '822',
+		'Origin': 'https://ujsportal.pacourts.us',
+		'Connection': 'keep-alive',
+		'Referer': 'https://ujsportal.pacourts.us/CaseSearch',
+		'Cookie': '.AspNetCore.Antiforgery.SBFfOFqeTDE=CfDJ8P3W0yQFf6RBv2C9_Z4GA3HbFz2l24QvbVek6RY8aVG1ZwkavXtaB3byOwWAt9-_eHe84hOSRP7L05dpNd-QjGnKiQn1tgMrTJQjhAmpedGzAoun3sMd84mrbJAniWTbp-l302HD9sSIjA7tHtcZxNc',
+		'Upgrade-Insecure-Requests': '1',
+		'Sec-Fetch-Dest': 'document',
+		'Sec-Fetch-Mode': 'navigate',
+		'Sec-Fetch-Site': 'same-origin',
+		'Sec-Fetch-User': '?1',
+		'Priority': 'u=0, i'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+	console.log('Response:',  data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+    </script>
+</body>
+</html>
